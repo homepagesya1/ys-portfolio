@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Legal Notice" lang="en">
+  <div class="container">
+    <section class="legal-page">
+      <h1>Legal Notice</h1>
+      <div class="legal-body">
+        <h2>Contact</h2>
+        <p>
+          Yannick Salm<br />
+          Switzerland<br />
+          yannicksalm07@gmail.com
+        </p>
+        <h2>Disclaimer</h2>
+        <p>
+          The contents of this website have been prepared with care. However, no guarantee
+          can be given for the accuracy, completeness or timeliness of the information provided.
+        </p>
+        <h2>Copyright</h2>
+        <p>
+          The content and works created by the site operator on this website are subject to
+          Swiss copyright law. Reproduction, editing, distribution and any kind of use outside
+          the limits of copyright law require the written consent of the respective author.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.legal-page { padding: 72px 0 80px; max-width: 640px; }
+.legal-page h1 { margin-bottom: 40px; }
+.legal-body h2 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 28px 0 10px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.legal-body p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+.legal-body a { color: var(--accent); }
+.legal-body a:hover { text-decoration: underline; }
+</style>

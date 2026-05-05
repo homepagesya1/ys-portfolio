@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Mail & Office" lang="en">
+  <div class="container">
+
+    <a href="/en/services" class="back-link">← Back to Services</a>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <span class="section-label">Service</span>
+      <h1>Mail & Office.</h1>
+      <p class="hero-desc">
+        Whether you're an individual, a small team or a growing business — I set up professional
+        email addresses, central cloud storage and proven Office applications, securely managed
+        and available anywhere. With the right Microsoft plan you get a scalable foundation
+        for daily work.
+      </p>
+      <a href="/en/contact" class="btn-primary">Request now</a>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== WHAT'S INCLUDED ===== -->
+    <section class="section">
+      <span class="section-label">What's included</span>
+      <h2>What do you get?</h2>
+      <p class="section-text">
+        A fully configured Microsoft 365 environment covers everything you need for
+        professional communication and structured collaboration.
+      </p>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">✉</div>
+          <h3>Professional email addresses</h3>
+          <p>As many mailboxes as you need — all under your own domain. No more private addresses in a business context.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">☁</div>
+          <h3>Cloud storage with OneDrive</h3>
+          <p>Store files centrally, access them from anywhere and share them securely with your team — no external drives needed.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⊞</div>
+          <h3>Microsoft Office</h3>
+          <p>Word, Excel, PowerPoint and more — depending on your plan as web versions or fully installed on up to five devices.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">◈</div>
+          <h3>Microsoft Teams</h3>
+          <p>Chats, video calls and file storage directly in your team — all in one interface, without additional tools.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚙</div>
+          <h3>Setup & configuration</h3>
+          <p>I set up your tenant, connect your domain, create the mailboxes and make sure everything runs cleanly from day one.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⬡</div>
+          <h3>Scalable & expandable</h3>
+          <p>New team members can be added at any time. The plan grows with your organisation — without restarts or data loss.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== PLANS ===== -->
+    <section class="section">
+      <span class="section-label">Plans</span>
+      <h2>Microsoft 365 plans that fit</h2>
+      <p class="section-text">
+        For most small and medium-sized organisations I recommend one of the two plans below.
+        Both are officially available through Microsoft — I handle the consultation,
+        procurement and setup.
+      </p>
+
+      <div class="plans">
+
+        <div class="plan">
+          <div class="plan-header">
+            <span class="plan-badge">Entry</span>
+            <h3>Microsoft 365 Business Basic</h3>
+            <div class="plan-price">
+              <span class="price-num">from CHF 7.–</span>
+              <span class="price-unit">/ user / month*</span>
+            </div>
+          </div>
+          <div class="plan-body">
+            <p>The solid entry point for teams or individuals who primarily work in the browser and the cloud.</p>
+            <ul class="plan-list">
+              <li>Exchange mailbox with your own domain (50 GB)</li>
+              <li>OneDrive with 1 TB cloud storage per user</li>
+              <li>Microsoft Teams for chats and video calls</li>
+              <li>Web and mobile versions of Word, Excel & PowerPoint</li>
+              <li>SharePoint for shared document storage</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="plan plan--featured">
+          <div class="plan-header">
+            <span class="plan-badge plan-badge--accent">Recommended</span>
+            <h3>Microsoft 365 Business Standard</h3>
+            <div class="plan-price">
+              <span class="price-num">from CHF 13.–</span>
+              <span class="price-unit">/ user / month*</span>
+            </div>
+          </div>
+          <div class="plan-body">
+            <p>The more comprehensive plan for teams who also want to work locally with full Office applications.</p>
+            <ul class="plan-list">
+              <li>Everything in Business Basic</li>
+              <li>Full desktop apps: Word, Excel, PowerPoint, Outlook & more</li>
+              <li>Install on up to 5 PCs, Macs and mobile devices per user</li>
+              <li>Microsoft Bookings for appointment management</li>
+              <li>Advanced Teams features including webinar tools</li>
+              <li>Clipchamp video editor and Microsoft Forms</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="price-note">
+        * Prices shown are indicative and may vary depending on use case, contract duration
+        and number of users. Final terms are defined during individual consultation.
+      </p>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <div class="cta-card">
+      <div>
+        <h2>Your situation is different or unclear?</h2>
+        <p>Not every case fits a standard model. Drop me a message — together we'll find a solution that works for you.</p>
+      </div>
+      <a href="/en/contact" class="btn-primary">Get in touch</a>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .hero { padding: 72px 0 56px; max-width: 720px; }
+  .hero h1 { font-size: clamp(32px, 5vw, 52px); margin: 6px 0 18px; }
+  .hero-desc { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+  .section { padding: 56px 0; }
+  .section h2 { margin: 6px 0 12px; }
+  .section-text { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; max-width: 680px; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .feature-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 22px; }
+  .feature-icon { font-size: 20px; color: var(--accent); margin-bottom: 10px; }
+  .feature-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .feature-card p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  .plan { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; }
+  .plan--featured { border-color: var(--accent); }
+
+  .plan-header { padding: 24px 24px 20px; border-bottom: 0.5px solid var(--border); }
+  .plan-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .plan-badge--accent { color: var(--accent); }
+  .plan-header h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 12px; }
+
+  .plan-price { display: flex; align-items: baseline; gap: 6px; }
+  .price-num  { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); }
+  .price-unit { font-size: 12px; color: var(--muted); }
+
+  .plan-body { padding: 20px 24px 24px; }
+  .plan-body > p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+
+  .plan-list { display: flex; flex-direction: column; gap: 8px; }
+  .plan-list li { font-size: 13px; color: var(--text); padding-left: 14px; position: relative; line-height: 1.5; }
+  .plan-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+
+  .price-note { font-size: 12px; color: var(--muted); line-height: 1.6; max-width: 640px; opacity: 0.7; }
+
+  .cta-card {
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 28px 32px;
+    margin: 48px 0 80px;
+  }
+  .cta-card h2 { font-size: 22px; margin-bottom: 6px; }
+  .cta-card p  { font-size: 14px; color: var(--muted); }
+
+  @media (max-width: 700px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .plans { grid-template-columns: 1fr; }
+    .cta-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>

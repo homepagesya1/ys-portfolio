@@ -1,0 +1,339 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Contact" lang="en">
+  <div class="container">
+
+    <div class="page-hero">
+      <span class="section-label">Get in touch</span>
+      <h1>Let's work together.</h1>
+      <p class="page-sub">Have a project in mind or just want to say hello? Send me a message — I'll get back to you as soon as possible.</p>
+    </div>
+
+    <div class="contact-layout">
+
+      <!-- ===== FORM ===== -->
+      <form
+        id="contactForm"
+        class="contact-form"
+        action="https://formspree.io/f/mreybznj"
+        method="POST"
+        novalidate
+      >
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="your@email.com" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="What's it about?" required />
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary submit-btn">Send message</button>
+      </form>
+
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="contact-aside">
+        <div class="aside-block">
+          <span class="section-label">Response time</span>
+          <p class="aside-text">I usually respond within 24–48 hours.</p>
+        </div>
+      </aside>
+
+    </div>
+
+    <hr class="divider" />
+
+    <!-- ===== SOCIAL ===== -->
+    <section class="social-section">
+      <span class="section-label">Find me here too</span>
+      <div class="social-grid">
+
+        <a href="https://github.com/Sky-Walker-xlsr" target="_blank" rel="noopener noreferrer" class="social-card">
+          <div class="social-icon">
+            <img src="/icons/github.png" alt="GitHub" width="22" height="22" />
+          </div>
+          <div class="social-info">
+            <div class="social-name">GitHub</div>
+            <div class="social-handle">@Sky-Walker-xlsr</div>
+          </div>
+          <span class="social-arrow">↗</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/yannick-salm-057945361/" target="_blank" rel="noopener noreferrer" class="social-card">
+          <div class="social-icon">
+            <img src="/icons/linkedin.png" alt="LinkedIn" width="22" height="22" />
+          </div>
+          <div class="social-info">
+            <div class="social-name">LinkedIn</div>
+            <div class="social-handle">Yannick Salm</div>
+          </div>
+          <span class="social-arrow">↗</span>
+        </a>
+
+        <a href="https://www.instagram.com/sky_gogggles/" target="_blank" rel="noopener noreferrer" class="social-card">
+          <div class="social-icon">
+            <img src="/icons/instagram.png" alt="Instagram" width="22" height="22" />
+          </div>
+          <div class="social-info">
+            <div class="social-name">Instagram</div>
+            <div class="social-handle">@sky_gogggles</div>
+          </div>
+          <span class="social-arrow">↗</span>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== SUCCESS MODAL ===== -->
+  <div id="contactSuccessModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-icon">✓</div>
+      <h2>Message sent!</h2>
+      <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+      <button id="contactModalClose" class="btn-outline">Close</button>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 72px 0 52px;
+    max-width: 580px;
+  }
+  .page-hero h1 { margin: 6px 0 12px; }
+  .page-sub { font-size: 16px; color: var(--muted); line-height: 1.7; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-field { display: flex; flex-direction: column; gap: 7px; }
+
+  .form-field label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    background: var(--bg);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color var(--trans);
+    resize: none;
+    width: 100%;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: var(--muted); opacity: 0.6; }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: var(--accent); }
+
+  .submit-btn { align-self: flex-start; }
+
+  .contact-aside { display: flex; flex-direction: column; gap: 28px; padding-top: 4px; }
+
+
+  .aside-text { font-size: 14px; color: var(--muted); line-height: 1.65; margin-top: 10px; }
+
+  /* Social */
+  .social-section { padding: 52px 0 80px; }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 22px;
+    text-decoration: none;
+    position: relative;
+    transition: border-color var(--trans), transform var(--trans);
+  }
+  .social-card:hover { border-color: var(--border-md); transform: translateY(-2px); }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .social-icon img { object-fit: contain; opacity: 0.8; }
+
+  .social-name   { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .social-handle { font-size: 12px; color: var(--muted); }
+
+  .social-arrow {
+    position: absolute;
+    top: 18px; right: 18px;
+    font-size: 13px; color: var(--muted);
+    transition: all var(--trans);
+  }
+  .social-card:hover .social-arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .modal.active { display: flex; }
+
+  .modal-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-md);
+    border-radius: var(--radius-lg);
+    padding: 44px 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .modal-icon {
+    width: 52px; height: 52px;
+    background: rgba(90, 184, 138, 0.12);
+    color: #5ab88a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 20px;
+  }
+
+  .modal-card h2 { font-size: 22px; margin-bottom: 10px; }
+  .modal-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; }
+
+  @media (max-width: 760px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form        = document.getElementById("contactForm") as HTMLFormElement | null
+  const modal       = document.getElementById("contactSuccessModal")
+  const closeButton = document.getElementById("contactModalClose")
+
+  function showModal()  { modal?.classList.add("active") }
+  function closeModal() { modal?.classList.remove("active") }
+
+  closeButton?.addEventListener("click", closeModal)
+  modal?.addEventListener("click", (e) => { if (e.target === modal) closeModal() })
+
+  async function sendForm() {
+    if (!form) return
+    const endpoint = form.action
+
+    const name    = (document.getElementById("name")    as HTMLInputElement)?.value.trim() || ""
+    const email   = (document.getElementById("email")   as HTMLInputElement)?.value.trim() || ""
+    const subject = (document.getElementById("subject") as HTMLInputElement)?.value.trim() || ""
+    const message = (document.getElementById("message") as HTMLTextAreaElement)?.value.trim() || ""
+
+    const formatted =
+`Name:\n- ${name}\n\nEmail:\n- ${email}\n\nSubject:\n- ${subject}\n\nMessage:\n${message}`
+
+    const fd = new FormData()
+    fd.append("name",     name)
+    fd.append("email",    email)
+    fd.append("subject",  subject)
+    fd.append("message",  formatted)
+    fd.append("_subject", `New contact message: ${subject}`)
+
+    const res = await fetch(endpoint, {
+      method: "POST",
+      body: fd,
+      headers: { Accept: "application/json" }
+    })
+
+    if (!res.ok) {
+      let text = "Something went wrong. Please try again."
+      try {
+        const data = await res.json()
+        if (data?.errors?.length) text = data.errors.map((e: any) => e.message).join("\n")
+      } catch (_) {}
+      throw new Error(text)
+    }
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault()
+    if (!form.checkValidity()) { form.reportValidity(); return }
+
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null
+    const originalText = btn?.textContent ?? "Send message"
+
+    try {
+      if (btn) { btn.disabled = true; btn.textContent = "Sending..." }
+      await sendForm()
+      form.reset()
+      showModal()
+    } catch (err: any) {
+      alert(err.message || "Something went wrong. Please try again.")
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = originalText }
+    }
+  })
+})
+</script>

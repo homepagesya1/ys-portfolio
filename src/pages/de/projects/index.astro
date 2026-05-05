@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { projects } from '../../../data/registry'
+
+const statusLabels: Record<string, string> = {
+  live:     'Live',
+  upcoming: 'Bald verfügbar',
+  active:   'Aktiv',
+  wip:      'In Entwicklung',
+}
+---
+
+<BaseLayout title="Projekte" lang="de">
+  <div class="container">
+
+    <div class="page-hero">
+      <span class="section-label">Meine Arbeit</span>
+      <h1>Projekte.</h1>
+      <p class="page-sub">Eine Auswahl meiner Arbeiten — und was als nächstes kommt.</p>
+    </div>
+
+    <div class="grid">
+      {projects.map((proj) => (
+        <a href={`/de/projects/${proj.slug}`} class="card">
+          {proj.cover ? (
+            <div class="card-img">
+              <img src={proj.cover} alt={proj.de.title} loading="lazy" />
+            </div>
+          ) : (
+            <div class="card-img card-img--empty"><span>YS.</span></div>
+          )}
+          <div class="card-body">
+            <div class="card-top">
+              <span class="card-tag">{proj.de.area}</span>
+              <span class={`badge badge-${proj.status}`}>{statusLabels[proj.status]}</span>
+            </div>
+            <h2>{proj.de.title}</h2>
+            <p>{proj.de.excerpt}</p>
+            {proj.tags.length > 0 && (
+              <div class="card-tags">
+                {proj.tags.map((tag) => <span class="chip">{tag}</span>)}
+              </div>
+            )}
+          </div>
+          <span class="card-arrow">↗</span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 72px 0 52px; max-width: 560px; }
+  .page-hero h1 { margin: 6px 0 12px; }
+  .page-sub { font-size: 16px; color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 80px; }
+
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); text-decoration: none;
+    position: relative; overflow: hidden;
+    transition: border-color var(--trans), transform var(--trans);
+  }
+  .card:hover { border-color: var(--border-md); transform: translateY(-2px); }
+
+  .card-img { height: 200px; overflow: hidden; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.4s ease; }
+  .card:hover .card-img img { transform: scale(1.04); }
+  .card-img--empty { background: var(--surface2); display: flex; align-items: center; justify-content: center; }
+  .card-img--empty span { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--border-md); }
+
+  .card-body { padding: 20px 22px 22px; flex: 1; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+  .card-body h2 { font-size: 19px; letter-spacing: -0.03em; margin-bottom: 8px; }
+  .card-body p  { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .card-arrow { position: absolute; top: 18px; right: 18px; font-size: 14px; color: var(--muted); transition: all var(--trans); }
+  .card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>

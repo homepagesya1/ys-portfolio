@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Impressum" lang="de">
+  <div class="container">
+    <section class="legal-page">
+      <h1>Impressum</h1>
+      <div class="legal-body">
+        <h2>Kontakt</h2>
+        <p>
+          Yannick Salm<br />
+          Schweiz<br />
+          yannicksalm07@gmail.com
+        </p>
+        <h2>Haftungsausschluss</h2>
+        <p>
+          Die Inhalte dieser Website wurden sorgfältig erstellt. Für die Richtigkeit, Vollständigkeit
+          und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
+        </p>
+        <h2>Urheberrecht</h2>
+        <p>
+          Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen
+          dem Schweizer Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+          Verwertung ausserhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung
+          des jeweiligen Autors.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.legal-page { padding: 72px 0 80px; max-width: 640px; }
+.legal-page h1 { margin-bottom: 40px; }
+.legal-body h2 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 28px 0 10px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.legal-body p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+.legal-body a { color: var(--accent); }
+.legal-body a:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { services } from '../../../data/registry'
+---
+
+<BaseLayout title="Services" lang="de">
+  <div class="container">
+
+    <div class="page-hero">
+      <span class="section-label">Was ich anbiete</span>
+      <h1>Services.</h1>
+      <p class="page-sub">Professionelle Lösungen — mit Sorgfalt und Präzision.</p>
+    </div>
+
+    <div class="grid">
+      {services.map((sv) => (
+        <a href={`/de/services/${sv.slug}`} class="card">
+          <span class="card-tag">Service</span>
+          <h2>{sv.de.title}</h2>
+          <p>{sv.de.excerpt}</p>
+          <ul class="feature-list">
+            {sv.de.features.map((f) => <li>{f}</li>)}
+          </ul>
+          <span class="card-arrow">↗</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="cta-card">
+      <div>
+        <h2>Interesse an einer Zusammenarbeit?</h2>
+        <p>Lass uns über dein Projekt sprechen.</p>
+      </div>
+      <a href="/de/contact" class="btn-primary">Kontakt aufnehmen</a>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { padding: 72px 0 52px; max-width: 560px; }
+  .page-hero h1 { margin: 6px 0 12px; }
+  .page-sub { font-size: 16px; color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 28px;
+    text-decoration: none; position: relative;
+    transition: border-color var(--trans), transform var(--trans);
+  }
+  .card:hover { border-color: var(--border-md); transform: translateY(-2px); }
+
+  .card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .card h2 { font-size: 22px; letter-spacing: -0.03em; margin-bottom: 10px; }
+  .card p  { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+
+  .feature-list { display: flex; flex-direction: column; gap: 8px; border-top: 0.5px solid var(--border); padding-top: 16px; margin-top: auto; }
+  .feature-list li { font-size: 13px; color: var(--muted); padding-left: 14px; position: relative; }
+  .feature-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+
+  .card-arrow { position: absolute; top: 24px; right: 24px; font-size: 14px; color: var(--muted); transition: all var(--trans); }
+  .card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  .cta-card {
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 28px 32px; margin-bottom: 80px;
+  }
+  .cta-card h2 { font-size: 22px; margin-bottom: 6px; }
+  .cta-card p  { font-size: 14px; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .cta-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>

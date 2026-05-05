@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Honeycomb Demo" lang="de">
+
+  <section class="hc-section">
+    <div class="container">
+      <div class="hc-wrap">
+        <div class="hc" id="hc" style="position: relative;">
+
+          <!-- 11 Hexagone — 12 Slots, 1 immer leer -->
+          <div class="hex hex--accent" data-id="1">
+            <span class="hex-label hex-label--accent">YS.</span>
+          </div>
+          <div class="hex hex--a" data-id="2">
+            <span class="hex-label">Web Dev</span>
+          </div>
+          <div class="hex hex--b" data-id="3"></div>
+          <div class="hex hex--c" data-id="4"></div>
+          <div class="hex hex--a" data-id="5"></div>
+          <div class="hex hex--b" data-id="6">
+            <span class="hex-label">UI/UX</span>
+          </div>
+          <div class="hex hex--c" data-id="7"></div>
+          <div class="hex hex--b" data-id="8"></div>
+          <div class="hex hex--a" data-id="9"></div>
+          <div class="hex hex--c" data-id="10"></div>
+          <div class="hex hex--b" data-id="11"></div>
+          <!-- Slot 12 bleibt leer — kein 12. Hex -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hc-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    padding: 40px 0;
+  }
+
+  .hc-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /*
+    Responsiveness via CSS scale() auf dem Container.
+    Die JS-Koordinaten bleiben 100% unverändert (600×460px intern).
+    Der Browser skaliert das gesamte Grid runter — kein JS-Eingriff nötig.
+  */
+  .hc {
+    width: 600px;
+    height: 460px;
+    flex-shrink: 0;
+    transform-origin: center center;
+  }
+
+  @media (max-width: 680px) {
+    .hc { transform: scale(0.82); }
+    .hc-wrap { height: 380px; }
+  }
+  @media (max-width: 520px) {
+    .hc { transform: scale(0.62); }
+    .hc-wrap { height: 290px; }
+  }
+  @media (max-width: 400px) {
+    .hc { transform: scale(0.48); }
+    .hc-wrap { height: 225px; }
+  }
+
+  .hex {
+    position: absolute;
+    width: 150px;
+    height: 130px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    will-change: transform, left, top, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /*
+    Custom Hex-Farben — kein Border, nur Fläche.
+    Dark Mode:  3 Graustufen + Gold-Accent
+    Light Mode: angepasst via [data-theme="light"]
+  */
+  .hex--a      { background: #1e2130; }
+  .hex--b      { background: #252837; }
+  .hex--c      { background: #2e3244; }
+  .hex--accent { background: var(--accent); }
+
+  :global([data-theme="light"]) .hex--a { background: #dedad4; }
+  :global([data-theme="light"]) .hex--b { background: #e8e5df; }
+  :global([data-theme="light"]) .hex--c { background: #cfc9c0; }
+
+  .hex-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.5;
+  }
+  .hex-label--accent {
+    color: var(--bg);
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    opacity: 1;
+  }
+</style>
+
+<script>
+// 12 Slot-Positionen — festes Arrangement
+const SLOTS: Record<number, { left: number; top: number }> = {
+   1: { left: 113, top:   0 },
+   2: { left:   0, top:  65 },
+   3: { left: 113, top: 130 },
+   4: { left: 113, top: 260 },
+   5: { left: 226, top:  65 },
+   6: { left: 339, top: 130 },
+   7: { left: 226, top: 195 },
+   8: { left: 226, top: 325 },
+   9: { left: 339, top:   0 },
+  10: { left: 339, top: 260 },
+  11: { left: 452, top:  65 },
+  12: { left: 452, top: 195 },
+}
+
+// Slot jedes Hex (keyed by data-id)
+const hexSlot: Record<string, number> = {}
+let emptySlot = 12  // Slot 12 startet leer
+const hexBusy: Record<string, boolean> = {}  // pro Hex eigener Lock
+
+function placeInstant(el: HTMLElement, slot: number) {
+  el.style.transition = 'none'
+  el.style.left       = `${SLOTS[slot].left}px`
+  el.style.top        = `${SLOTS[slot].top}px`
+  el.style.transform  = 'scale(0.91)'
+  el.style.opacity    = el.classList.contains('hex--c') ? '0.55' : '1'
+  el.style.zIndex     = '1'
+  void el.offsetWidth  // force reflow
+}
+
+function handleHover(hex: HTMLElement) {
+  const id = hex.dataset.id!
+
+  // Nur dieses Hex sperren — andere dürfen gleichzeitig animieren
+  if (hexBusy[id]) return
+  hexBusy[id] = true
+
+  const fromSlot = hexSlot[id]
+  const toSlot   = emptySlot
+
+  // Slots sofort reservieren — kein anderes Hex kann denselben nehmen
+  hexSlot[id] = toSlot
+  emptySlot   = fromSlot
+
+  // 1. Fade out + shrink am aktuellen Ort
+  hex.style.transition = 'transform 0.3s ease, opacity 0.25s ease'
+  hex.style.transform  = 'scale(0.55)'
+  hex.style.opacity    = '0'
+
+  setTimeout(() => {
+    // 2. Unsichtbar an neuen Slot springen
+    hex.style.transition = 'none'
+    hex.style.left       = `${SLOTS[toSlot].left}px`
+    hex.style.top        = `${SLOTS[toSlot].top}px`
+    void hex.offsetWidth
+
+    // 3. Einblenden mit federndem Scale
+    hex.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.35s ease'
+    hex.style.transform  = 'scale(0.91)'
+    hex.style.opacity    = hex.classList.contains('hex--c') ? '0.55' : '1'
+    hex.style.zIndex     = '1'
+
+    setTimeout(() => { hexBusy[id] = false }, 380)
+  }, 280)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hc    = document.getElementById('hc')!
+  const hexes = Array.from(hc.querySelectorAll<HTMLElement>('.hex'))
+
+  // Initiale Platzierung: Hexe auf Slots 1–11, Slot 12 leer
+  hexes.forEach((hex, i) => {
+    const slot = i + 1
+    hexSlot[hex.dataset.id!] = slot
+    placeInstant(hex, slot)
+  })
+
+  // Hover → Hex wechselt zum leeren Slot
+  hexes.forEach(hex => {
+    hex.addEventListener('mouseenter', () => handleHover(hex))
+  })
+})
+</script>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Privacy Policy" lang="en">
+  <div class="container">
+    <section class="legal-page">
+      <h1>Privacy Policy</h1>
+      <div class="legal-body">
+        <h2>Responsible party</h2>
+        <p>Yannick Salm, Switzerland — yannicksalm07@gmail.com</p>
+
+        <h2>Data collection</h2>
+        <p>
+          This website does not collect personal data without your consent.
+          The contact form uses Formspree.io for secure message transmission.
+        </p>
+
+        <h2>Third-party services</h2>
+        <p>
+          The contact form uses <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a>.
+          Information about their privacy practices can be found on the Formspree website.
+        </p>
+
+        <h2>Hosting</h2>
+        <p>
+          This website is hosted via Cloudflare Pages. Information about data processing
+          by Cloudflare can be found in their privacy policy.
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          This website does not use tracking cookies. Only technically necessary settings
+          (e.g. theme preference) are stored locally in your browser and are not shared
+          with third parties.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          You have the right to access, correct and delete your data.
+          For any questions regarding privacy, please contact me at kontakt@yannicksalm.ch.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.legal-page { padding: 72px 0 80px; max-width: 640px; }
+.legal-page h1 { margin-bottom: 40px; }
+.legal-body h2 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 28px 0 10px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.legal-body p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+.legal-body a { color: var(--accent); }
+.legal-body a:hover { text-decoration: underline; }
+</style>

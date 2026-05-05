@@ -1,0 +1,380 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Home Server" lang="en">
+    <div class="container">
+        <a href="/en/projects" class="back-link">← Back to Projects</a>
+
+        <section class="hero">
+            <div class="hero-text">
+                <span class="section-label">Project</span>
+                <h1>Home Server Setup</h1>
+                <p class="hero-desc">
+                    A self-built home server environment to run various services
+                    locally, test new technologies and gain hands-on experience
+                    in system engineering and infrastructure.
+                </p>
+
+                <div class="meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Area</span>
+                        <span>System Engineering, Server</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Role</span>
+                        <span>Setup, Configuration</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Status</span>
+                        <span class="badge badge-active">● Active</span>
+                    </div>
+                </div>
+
+                <div class="tags">
+                    <span class="chip">Proxmox</span>
+                    <span class="chip">pfSense</span>
+                    <span class="chip">Linux</span>
+                    <span class="chip">VPN</span>
+                    <span class="chip">Infrastructure</span>
+                </div>
+            </div>
+
+            <div class="hero-img">
+                <img src="/images/proxmox_1.1.png" alt="Home Server preview" />
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="section">
+            <span class="section-label">About the project</span>
+            <div class="two-col">
+                <div class="info-card">
+                    <h3>Starting point</h3>
+                    <p>
+                        A flexible environment was needed to test new tools and
+                        services independently from productive systems — and to
+                        understand firsthand how modern infrastructure is built
+                        and managed.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3>Goal</h3>
+                    <p>
+                        Build a stable, expandable home server environment that
+                        supports containerised services and serves as a solid
+                        foundation for future projects and experiments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="section">
+            <span class="section-label">What I did</span>
+            <h2>How it was set up.</h2>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-num">01</span>
+                    <div>
+                        <h3>Proxmox</h3>
+                        <p>
+                            Proxmox was used as the hypervisor base. Multiple
+                            systems can run in parallel, cleanly separated and
+                            centrally managed — enabling a flexible and scalable
+                            infrastructure.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-num">02</span>
+                    <div>
+                        <h3>Firewall — pfSense</h3>
+                        <p>
+                            pfSense was set up as the central firewall. It
+                            controls network traffic, enables clear segmentation
+                            and provides structured security across the entire
+                            environment.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-num">03</span>
+                    <div>
+                        <h3>Network & access</h3>
+                        <p>
+                            Access was deliberately implemented via VPN.
+                            Services are not reachable directly from the
+                            internet — only through a secure connection,
+                            significantly strengthening the overall
+                            architecture.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-num">04</span>
+                    <div>
+                        <h3>Modular & expandable</h3>
+                        <p>
+                            The environment was designed to be modular — new
+                            services can be added and tested at any time without
+                            affecting existing systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="section">
+            <span class="section-label">Inside look</span>
+            <h2>Proxmox dashboard & hardware.</h2>
+            <div class="ba-grid">
+                <div class="ba-card">
+                    <div class="ba-header">
+                        <h3>Proxmox dashboard</h3>
+                        <p>
+                            The Proxmox dashboard shows several virtual machines
+                            already configured, including the pfSense firewall.
+                            All systems follow a consistent naming scheme for
+                            easier management.
+                        </p>
+                    </div>
+                    <div class="ba-img">
+                        <img
+                            src="/images/homeserver_2.png"
+                            alt="Proxmox dashboard"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                <div class="ba-card">
+                    <div class="ba-header">
+                        <h3>The server</h3>
+                        <p>
+                            An older desktop PC with an i7-8700T, 16 GB RAM and
+                            500 GB SSD. Performance is limited but more than
+                            sufficient to run multiple virtual machines
+                            parallel.
+                        </p>
+                    </div>
+                    <div class="ba-img">
+                        <img
+                            src="/images/homeserver_1.png"
+                            alt="Home server hardware"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="section">
+            <span class="section-label">Result</span>
+            <h2>What the project delivered.</h2>
+            <div class="result-box">
+                <p>
+                    A flexible home server environment as a central platform for
+                    testing, hosting personal services and learning. New
+                    technologies can be tried efficiently and practical
+                    experience with modern infrastructure is gained directly —
+                    which deepens my understanding of real-world systems and
+                    supports my IT apprenticeship.
+                </p>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
+
+<style>
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 56px;
+        align-items: start;
+        padding: 72px 0 56px;
+    }
+    .hero-text h1 {
+        font-size: clamp(28px, 4.5vw, 48px);
+        margin: 6px 0 18px;
+    }
+    .hero-desc {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.75;
+        margin-bottom: 28px;
+    }
+
+    .meta {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 22px;
+    }
+    .meta-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 11px 0;
+        border-bottom: 0.5px solid var(--border);
+        font-size: 14px;
+    }
+    .meta-label {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--muted);
+        min-width: 64px;
+    }
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .hero-img {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 0.5px solid var(--border);
+        width: 375px;
+        height: 500px;
+        flex-shrink: 0;
+        align-self: flex-start;
+    }
+    .hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+    }
+
+    .section {
+        padding: 56px 0;
+    }
+    .section h2 {
+        margin: 6px 0 24px;
+    }
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+    .info-card {
+        background: var(--surface);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 24px;
+    }
+    .info-card h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+    }
+    .info-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+    }
+
+    .features {
+        display: flex;
+        flex-direction: column;
+    }
+    .feature {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 20px 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+    .feature:last-child {
+        border-bottom: none;
+    }
+    .feature-num {
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        min-width: 28px;
+        margin-top: 2px;
+    }
+    .feature h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        letter-spacing: -0.01em;
+    }
+    .feature p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.65;
+    }
+
+    .ba-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+    .ba-card {
+        background: var(--surface);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+    .ba-header {
+        padding: 20px 20px 14px;
+    }
+    .ba-header h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .ba-header p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+    }
+    .ba-img img {
+        width: 100%;
+        display: block;
+    }
+
+    .result-box {
+        background: var(--surface);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 28px 32px;
+        max-width: 720px;
+        margin-bottom: 40px;
+    }
+    .result-box p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.75;
+    }
+
+    @media (max-width: 860px) {
+        .hero {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        .hero-img {
+            order: -1;
+        }
+        .two-col {
+            grid-template-columns: 1fr;
+        }
+        .ba-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

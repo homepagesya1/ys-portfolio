@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Datenschutz" lang="de">
+  <div class="container">
+    <section class="legal-page">
+      <h1>Datenschutzerklärung</h1>
+      <div class="legal-body">
+        <h2>Verantwortliche Stelle</h2>
+        <p>Yannick Salm, Schweiz — yannicksalm07@gmail.com</p>
+
+        <h2>Datenerfassung</h2>
+        <p>
+          Diese Website erfasst keine personenbezogenen Daten ohne deine Zustimmung.
+          Das Kontaktformular nutzt Formspree.io zur sicheren Übermittlung deiner Nachricht.
+        </p>
+
+        <h2>Externe Dienste</h2>
+        <p>
+          Das Kontaktformular verwendet <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">Formspree</a>.
+          Informationen zu deren Datenschutzrichtlinien findest du auf der Formspree-Website.
+        </p>
+
+        <h2>Hosting</h2>
+        <p>
+          Diese Website wird über Cloudflare Pages gehostet. Informationen zur Datenverarbeitung
+          durch Cloudflare findest du in deren Datenschutzerklärung.
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          Diese Website verwendet keine Tracking-Cookies. Lediglich technisch notwendige
+          Einstellungen (z. B. Theme-Präferenz) werden lokal im Browser gespeichert und
+          nicht an Dritte übermittelt.
+        </p>
+
+        <h2>Deine Rechte</h2>
+        <p>
+          Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner Daten.
+          Bei Fragen oder Anliegen zum Datenschutz erreichst du mich unter kontakt@yannicksalm.ch.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+.legal-page { padding: 72px 0 80px; max-width: 640px; }
+.legal-page h1 { margin-bottom: 40px; }
+.legal-body h2 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 28px 0 10px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.legal-body p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+.legal-body a { color: var(--accent); }
+.legal-body a:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="VA — In-Depth Work" lang="en">
+  <div class="container">
+
+    <a href="/en/projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div>
+        <span class="section-label">In-Depth Work (Vertiefungsarbeit)</span>
+        <h1>VA — Monitor Lamp</h1>
+        <p class="hero-desc">
+          The Vertiefungsarbeit (VA) is a core part of my IT apprenticeship. I develop my own project
+          and document it completely using the structured project method <strong>IPERKA</strong>.
+        </p>
+
+        <div class="meta">
+          <div class="meta-row">
+            <span class="meta-label">Area</span>
+            <span>Embedded Systems / Hardware</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Method</span>
+            <span>IPERKA</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Status</span>
+            <span class="badge badge-wip">● Planning</span>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="chip">ESP32</span>
+          <span class="chip">LED</span>
+          <span class="chip">Hardware</span>
+          <span class="chip">Electronics</span>
+        </div>
+      </div>
+
+      <div class="hero-summary">
+        <span class="section-label">Project idea</span>
+        <h3>Monitor lamp with ESP32</h3>
+        <p>
+          A custom-built monitor lamp controlled by an ESP32. Brightness and colour temperature
+          are adjusted via two sliders. The LEDs can be switched on and off using a resistor button.
+        </p>
+        <div class="components">
+          <div class="component component--done">
+            <span class="comp-icon">✓</span>
+            <div>
+              <div class="comp-name">Lamp materials</div>
+              <div class="comp-status">Purchased</div>
+            </div>
+          </div>
+          <div class="component component--pending">
+            <span class="comp-icon">○</span>
+            <div>
+              <div class="comp-name">ESP32 controller</div>
+              <div class="comp-status">Still to be sourced</div>
+            </div>
+          </div>
+          <div class="component component--pending">
+            <span class="comp-icon">○</span>
+            <div>
+              <div class="comp-name">LED strip</div>
+              <div class="comp-status">Still to be sourced</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== IPERKA ===== -->
+    <section class="section">
+      <span class="section-label">Project method</span>
+      <h2>IPERKA</h2>
+      <p class="section-sub">
+        IPERKA is a structured project methodology divided into six phases — guiding the project
+        from initial research through to final evaluation.
+      </p>
+    </section>
+
+    <!-- I — Inform -->
+    <div class="iperka-step iperka-step--done">
+      <div class="step-marker">
+        <div class="step-dot step-dot--done"></div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">I</span>
+          <div>
+            <h3>Inform</h3>
+            <span class="step-badge step-badge--done">Completed</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <p>
+            In the information phase I researched the requirements for the VA and gathered the
+            foundational knowledge needed for my project.
+          </p>
+          <div class="info-blocks">
+            <div class="info-block">
+              <h4>VA requirements</h4>
+              <p>Research into the structure, process and assessment criteria of the Vertiefungsarbeit.</p>
+            </div>
+            <div class="info-block">
+              <h4>ESP32 basics</h4>
+              <p>Deep-dive into the ESP32 microcontroller — architecture, programming and use cases.</p>
+            </div>
+            <div class="info-block">
+              <h4>LED control methods</h4>
+              <p>Research into different methods to control LEDs via ESP32 — PWM, digital outputs, dimming and colour temperature.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P — Plan -->
+    <div class="iperka-step iperka-step--active">
+      <div class="step-marker">
+        <div class="step-dot step-dot--active"></div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">P</span>
+          <div>
+            <h3>Plan</h3>
+            <span class="step-badge step-badge--active">Current</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <p>
+            I'm currently in the planning phase. The project is a custom-built monitor lamp
+            controlled by an ESP32.
+          </p>
+          <div class="plan-grid">
+            <div class="plan-card">
+              <h4>Functionality</h4>
+              <ul>
+                <li>Brightness adjustable via slider</li>
+                <li>Colour temperature via second slider</li>
+                <li>On/off via resistor button</li>
+                <li>Controller: ESP32</li>
+              </ul>
+            </div>
+            <div class="plan-card">
+              <h4>Material procurement</h4>
+              <ul>
+                <li class="done">Lamp materials — <strong>purchased</strong></li>
+                <li class="pending">ESP32 controller — <em>pending</em></li>
+                <li class="pending">LED strip — <em>pending</em></li>
+                <li class="pending">Resistors & sliders — <em>pending</em></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E — Decide -->
+    <div class="iperka-step iperka-step--upcoming">
+      <div class="step-marker">
+        <div class="step-dot step-dot--upcoming"></div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">E</span>
+          <div>
+            <h3>Decide</h3>
+            <span class="step-badge step-badge--upcoming">Upcoming</span>
+          </div>
+        </div>
+        <div class="step-body step-body--empty">
+          <p>This phase will be completed after planning is finished.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- R — Realise -->
+    <div class="iperka-step iperka-step--upcoming">
+      <div class="step-marker">
+        <div class="step-dot step-dot--upcoming"></div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">R</span>
+          <div>
+            <h3>Realise</h3>
+            <span class="step-badge step-badge--upcoming">Upcoming</span>
+          </div>
+        </div>
+        <div class="step-body step-body--empty">
+          <p>The implementation of the project follows after the decision phase.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- K — Check -->
+    <div class="iperka-step iperka-step--upcoming">
+      <div class="step-marker">
+        <div class="step-dot step-dot--upcoming"></div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">K</span>
+          <div>
+            <h3>Check</h3>
+            <span class="step-badge step-badge--upcoming">Upcoming</span>
+          </div>
+        </div>
+        <div class="step-body step-body--empty">
+          <p>Testing and quality assurance of the finished project.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- A — Evaluate -->
+    <div class="iperka-step iperka-step--upcoming" style="margin-bottom: 80px;">
+      <div class="step-marker">
+        <div class="step-dot step-dot--upcoming"></div>
+        <div class="step-line step-line--last"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-head">
+          <span class="step-letter">A</span>
+          <div>
+            <h3>Evaluate</h3>
+            <span class="step-badge step-badge--upcoming">Upcoming</span>
+          </div>
+        </div>
+        <div class="step-body step-body--empty">
+          <p>Final evaluation, reflection and documentation.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 56px;
+    align-items: start;
+    padding: 72px 0 56px;
+  }
+
+  .hero h1 { font-size: clamp(28px, 4.5vw, 48px); margin: 6px 0 18px; }
+  .hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+  .hero-desc strong { color: var(--text); }
+
+  .meta { display: flex; flex-direction: column; margin-bottom: 22px; }
+  .meta-row { display: flex; align-items: center; gap: 16px; padding: 11px 0; border-bottom: 0.5px solid var(--border); font-size: 14px; }
+  .meta-label { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); min-width: 64px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .hero-summary {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+  }
+  .hero-summary h3 { font-size: 16px; margin: 8px 0 10px; }
+  .hero-summary p  { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+
+  .components { display: flex; flex-direction: column; gap: 8px; }
+  .component { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: var(--radius-sm); border: 0.5px solid var(--border); background: var(--bg); }
+  .comp-icon { font-size: 14px; flex-shrink: 0; }
+  .component--done .comp-icon { color: #5ab88a; }
+  .component--pending .comp-icon { color: var(--muted); }
+  .comp-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .comp-status { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  .section { padding: 48px 0 24px; }
+  .section h2 { margin: 6px 0 10px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+  /* IPERKA */
+  .iperka-step { display: flex; gap: 24px; }
+
+  .step-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 4px; }
+
+  .step-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); background: var(--bg); flex-shrink: 0; z-index: 1; }
+  .step-dot--done     { background: #5ab88a; border-color: #5ab88a; }
+  .step-dot--active   { background: var(--accent); border-color: var(--accent); }
+  .step-dot--upcoming { background: var(--bg); border-color: var(--border); }
+
+  .step-line { width: 1px; flex: 1; background: var(--border); margin: 4px 0; min-height: 32px; }
+  .step-line--last { display: none; }
+
+  .step-content { padding-bottom: 40px; flex: 1; min-width: 0; }
+
+  .step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+
+  .step-letter { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text); min-width: 28px; line-height: 1; }
+  .iperka-step--upcoming .step-letter { color: var(--muted); opacity: 0.4; }
+
+  .step-head h3 { font-size: 20px; letter-spacing: -0.02em; margin: 0; }
+  .iperka-step--upcoming .step-head h3 { color: var(--muted); }
+
+  .step-badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: var(--radius-pill); letter-spacing: 0.04em; }
+  .step-badge--done     { background: rgba(90, 184, 138, 0.12); color: #5ab88a; }
+  .step-badge--active   { background: var(--tag-bg); color: var(--accent); }
+  .step-badge--upcoming { background: var(--surface2); color: var(--muted); }
+
+  .step-body > p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; max-width: 640px; }
+  .step-body--empty > p { font-style: italic; opacity: 0.6; }
+
+  .info-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .info-block { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 18px; }
+  .info-block h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .info-block p  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  .plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .plan-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 18px; }
+  .plan-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .plan-card ul { display: flex; flex-direction: column; gap: 7px; }
+  .plan-card li { font-size: 13px; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.5; }
+  .plan-card li::before { content: '—'; position: absolute; left: 0; color: var(--border-md); font-size: 11px; }
+  .plan-card li.done { color: var(--text); }
+  .plan-card li.done::before { color: #5ab88a; }
+  .plan-card li.pending::before { color: var(--accent); }
+  .plan-card li strong { color: #5ab88a; }
+  .plan-card li em { color: var(--accent); font-style: normal; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .info-blocks { grid-template-columns: 1fr; }
+    .plan-grid { grid-template-columns: 1fr; }
+  }
+</style>

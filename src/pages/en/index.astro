@@ -14,11 +14,9 @@ const statusLabels: Record<string, string> = {
 ---
 
 <BaseLayout title="Home" lang="en">
-
   <!-- ==================== HERO ==================== -->
   <section class="hero">
     <div class="container hero-grid">
-
       <div class="hero-inner">
         <span class="section-label">Web Creator & Developer</span>
         <h1 class="hero-h1">
@@ -58,7 +56,6 @@ const statusLabels: Record<string, string> = {
         <div class="hex hex--b" data-id="11"></div>
         <!-- Slot 12 leer -->
       </div>
-
     </div>
   </section>
 
@@ -75,18 +72,22 @@ const statusLabels: Record<string, string> = {
           professional.
         </p>
       </div>
-      <a href="/en/services" class="btn-outline view-all-btn">View all services →</a>
+      <a href="/en/services" class="btn-outline view-all-btn"
+        >View all services →</a
+      >
     </div>
 
     <div class="card-grid">
-      {topServices.map((sv) => (
-        <a href={`/de/services/${sv.slug}`} class="card">
-          <span class="card-tag">Service</span>
-          <h3>{sv.en.title}</h3>
-          <p class="card-excerpt">{sv.en.excerpt}</p>
-          <span class="card-arrow">↗</span>
-        </a>
-      ))}
+      {
+        topServices.map((sv) => (
+          <a href={`/de/services/${sv.slug}`} class="card">
+            <span class="card-tag">Service</span>
+            <h3>{sv.en.title}</h3>
+            <p class="card-excerpt">{sv.en.excerpt}</p>
+            <span class="card-arrow">↗</span>
+          </a>
+        ))
+      }
     </div>
   </section>
 
@@ -98,43 +99,53 @@ const statusLabels: Record<string, string> = {
         <h2>Latest Projects.</h2>
         <p class="section-sub">A selection of things I've built recently.</p>
       </div>
-      <a href="/en/projects" class="btn-outline view-all-btn">Alle View Projects →</a>
+      <a href="/en/projects" class="btn-outline view-all-btn"
+        >Alle View Projects →</a
+      >
     </div>
 
     <div class="card-grid">
-      {latestProjects.map((proj) => (
-        <a href={`/de/projects/${proj.slug}`} class="card card--project">
-          {proj.cover && (
-            <div class="card-cover">
-              <img src={proj.cover} alt={proj.en.title} loading="lazy" />
+      {
+        latestProjects.map((proj) => (
+          <a href={`/de/projects/${proj.slug}`} class="card card--project">
+            {proj.cover && (
+              <div class="card-cover">
+                <img src={proj.cover} alt={proj.en.title} loading="lazy" />
+              </div>
+            )}
+            <div class="card-body">
+              <span class="card-tag">{proj.en.area}</span>
+              <h3>{proj.en.title}</h3>
+              <p class="card-excerpt">{proj.en.excerpt}</p>
+              <div class="card-foot">
+                <span class={`badge badge-${proj.status}`}>
+                  {statusLabels[proj.status]}
+                </span>
+                <span class="card-arrow-sm">↗</span>
+              </div>
             </div>
-          )}
-          <div class="card-body">
-            <span class="card-tag">{proj.en.area}</span>
-            <h3>{proj.en.title}</h3>
-            <p class="card-excerpt">{proj.en.excerpt}</p>
-            <div class="card-foot">
-              <span class={`badge badge-${proj.status}`}>
-                {statusLabels[proj.status]}
-              </span>
-              <span class="card-arrow-sm">↗</span>
-            </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        ))
+      }
     </div>
   </section>
-
 </BaseLayout>
 
 <style>
-  .hero { padding: 80px 0 56px; }
+  .hero {
+    padding: 80px 0 56px;
+  }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 56px;
     align-items: center;
+  }
+
+  .hero-inner {
+    min-width: 0;
+    padding-top: 50px;
   }
 
   .hero-h1 {
@@ -143,7 +154,10 @@ const statusLabels: Record<string, string> = {
     line-height: 1.05;
     margin: 8px 0 22px;
   }
-  .hero-h1 em { font-style: normal; color: var(--accent); }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
 
   .hero-sub {
     font-size: 17px;
@@ -152,7 +166,11 @@ const statusLabels: Record<string, string> = {
     margin-bottom: 28px;
     line-height: 1.7;
   }
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
   /* Honeycomb */
   .hc {
@@ -176,14 +194,28 @@ const statusLabels: Record<string, string> = {
     -webkit-backface-visibility: hidden;
   }
 
-  .hex--a      { background: #1e2130; }
-  .hex--b      { background: #252837; }
-  .hex--c      { background: #2e3244; }
-  .hex--accent { background: var(--accent); }
+  .hex--a {
+    background: #1e2130;
+  }
+  .hex--b {
+    background: #252837;
+  }
+  .hex--c {
+    background: #2e3244;
+  }
+  .hex--accent {
+    background: var(--accent);
+  }
 
-  :global([data-theme="light"]) .hex--a { background: #dedad4; }
-  :global([data-theme="light"]) .hex--b { background: #e8e5df; }
-  :global([data-theme="light"]) .hex--c { background: #cfc9c0; }
+  :global([data-theme="light"]) .hex--a {
+    background: #dedad4;
+  }
+  :global([data-theme="light"]) .hex--b {
+    background: #e8e5df;
+  }
+  :global([data-theme="light"]) .hex--c {
+    background: #cfc9c0;
+  }
 
   .hex-label {
     font-family: var(--font-display);
@@ -205,7 +237,9 @@ const statusLabels: Record<string, string> = {
   }
 
   /* Sections */
-  .home-section { padding: 72px 0; }
+  .home-section {
+    padding-block: 72px;
+  }
 
   .section-head {
     display: flex;
@@ -214,9 +248,19 @@ const statusLabels: Record<string, string> = {
     gap: 20px;
     margin-bottom: 28px;
   }
-  .section-head h2 { margin-bottom: 6px; }
-  .section-sub { font-size: 15px; color: var(--muted); max-width: 360px; }
-  .view-all-btn { font-size: 13px; padding: 9px 16px; flex-shrink: 0; }
+  .section-head h2 {
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 360px;
+  }
+  .view-all-btn {
+    font-size: 13px;
+    padding: 9px 16px;
+    flex-shrink: 0;
+  }
 
   /* Cards */
   .card-grid {
@@ -235,119 +279,189 @@ const statusLabels: Record<string, string> = {
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    transition: border-color var(--trans), transform var(--trans);
+    transition:
+      border-color var(--trans),
+      transform var(--trans);
   }
-  .card:hover { border-color: var(--border-md); transform: translateY(-2px); }
+  .card:hover {
+    border-color: var(--border-md);
+    transform: translateY(-2px);
+  }
 
-  .card--project { padding: 0; }
-  .card-cover { height: 180px; overflow: hidden; }
+  .card--project {
+    padding: 0;
+  }
+  .card-cover {
+    height: 180px;
+    overflow: hidden;
+  }
   .card-cover img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: top;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
     transition: transform 0.4s ease;
   }
-  .card:hover .card-cover img { transform: scale(1.04); }
-  .card-body { padding: 20px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+  .card:hover .card-cover img {
+    transform: scale(1.04);
+  }
+  .card-body {
+    padding: 20px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
   .card-tag {
     display: block;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
   }
-  .card h3 { font-size: 17px; letter-spacing: -0.02em; margin-bottom: 8px; }
-  .card-excerpt { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
-  .card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+  .card h3 {
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .card-excerpt {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
 
   .card-arrow {
-    position: absolute; top: 22px; right: 22px;
-    font-size: 14px; color: var(--muted);
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    font-size: 14px;
+    color: var(--muted);
     transition: all var(--trans);
   }
-  .card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
-  .card-arrow-sm { font-size: 13px; color: var(--muted); transition: color var(--trans); }
-  .card:hover .card-arrow-sm { color: var(--accent); }
+  .card:hover .card-arrow {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+  .card-arrow-sm {
+    font-size: 13px;
+    color: var(--muted);
+    transition: color var(--trans);
+  }
+  .card:hover .card-arrow-sm {
+    color: var(--accent);
+  }
 
   @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hc { display: none; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hc {
+      display: none;
+    }
   }
   @media (max-width: 600px) {
-    .section-head { flex-direction: column; align-items: flex-start; }
+    .hero {
+      padding: 48px 0 40px;
+    }
+    .hero-inner {
+      padding-top: 24px;
+    }
+    .home-section {
+      padding-block: 52px;
+    }
+    .section-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
 <script>
-const SLOTS: Record<number, { left: number; top: number }> = {
-   1: { left: 113, top:   0 },
-   2: { left:   0, top:  65 },
-   3: { left: 113, top: 130 },
-   4: { left: 113, top: 260 },
-   5: { left: 226, top:  65 },
-   6: { left: 339, top: 130 },
-   7: { left: 226, top: 195 },
-   8: { left: 226, top: 325 },
-   9: { left: 339, top:   0 },
-  10: { left: 339, top: 260 },
-  11: { left: 452, top:  65 },
-  12: { left: 452, top: 195 },
-}
+  const SLOTS: Record<number, { left: number; top: number }> = {
+    1: { left: 113, top: 0 },
+    2: { left: 0, top: 65 },
+    3: { left: 113, top: 130 },
+    4: { left: 113, top: 260 },
+    5: { left: 226, top: 65 },
+    6: { left: 339, top: 130 },
+    7: { left: 226, top: 195 },
+    8: { left: 226, top: 325 },
+    9: { left: 339, top: 0 },
+    10: { left: 339, top: 260 },
+    11: { left: 452, top: 65 },
+    12: { left: 452, top: 195 },
+  };
 
-const hexSlot: Record<string, number> = {}
-let emptySlot = 12
-const hexBusy: Record<string, boolean> = {}
+  const hexSlot: Record<string, number> = {};
+  let emptySlot = 12;
+  const hexBusy: Record<string, boolean> = {};
 
-function placeInstant(el: HTMLElement, slot: number) {
-  el.style.transition = 'none'
-  el.style.left       = `${SLOTS[slot].left}px`
-  el.style.top        = `${SLOTS[slot].top}px`
-  el.style.transform  = 'scale(0.91)'
-  el.style.opacity    = el.classList.contains('hex--c') ? '0.55' : '1'
-  el.style.zIndex     = '1'
-  void el.offsetWidth
-}
+  function placeInstant(el: HTMLElement, slot: number) {
+    el.style.transition = "none";
+    el.style.left = `${SLOTS[slot].left}px`;
+    el.style.top = `${SLOTS[slot].top}px`;
+    el.style.transform = "scale(0.91)";
+    el.style.opacity = el.classList.contains("hex--c") ? "0.55" : "1";
+    el.style.zIndex = "1";
+    void el.offsetWidth;
+  }
 
-function handleHover(hex: HTMLElement) {
-  const id = hex.dataset.id!
-  if (hexBusy[id]) return
-  hexBusy[id] = true
+  function handleHover(hex: HTMLElement) {
+    const id = hex.dataset.id!;
+    if (hexBusy[id]) return;
+    hexBusy[id] = true;
 
-  const fromSlot = hexSlot[id]
-  const toSlot   = emptySlot
+    const fromSlot = hexSlot[id];
+    const toSlot = emptySlot;
 
-  hexSlot[id] = toSlot
-  emptySlot   = fromSlot
+    hexSlot[id] = toSlot;
+    emptySlot = fromSlot;
 
-  hex.style.transition = 'transform 0.3s ease, opacity 0.25s ease'
-  hex.style.transform  = 'scale(0.55)'
-  hex.style.opacity    = '0'
+    hex.style.transition = "transform 0.3s ease, opacity 0.25s ease";
+    hex.style.transform = "scale(0.55)";
+    hex.style.opacity = "0";
 
-  setTimeout(() => {
-    hex.style.transition = 'none'
-    hex.style.left       = `${SLOTS[toSlot].left}px`
-    hex.style.top        = `${SLOTS[toSlot].top}px`
-    void hex.offsetWidth
+    setTimeout(() => {
+      hex.style.transition = "none";
+      hex.style.left = `${SLOTS[toSlot].left}px`;
+      hex.style.top = `${SLOTS[toSlot].top}px`;
+      void hex.offsetWidth;
 
-    hex.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.35s ease'
-    hex.style.transform  = 'scale(0.91)'
-    hex.style.opacity    = hex.classList.contains('hex--c') ? '0.55' : '1'
-    hex.style.zIndex     = '1'
+      hex.style.transition =
+        "transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.35s ease";
+      hex.style.transform = "scale(0.91)";
+      hex.style.opacity = hex.classList.contains("hex--c") ? "0.55" : "1";
+      hex.style.zIndex = "1";
 
-    setTimeout(() => { hexBusy[id] = false }, 380)
-  }, 280)
-}
+      setTimeout(() => {
+        hexBusy[id] = false;
+      }, 380);
+    }, 280);
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hc    = document.getElementById('hc-hero-en')!
-  const hexes = Array.from(hc.querySelectorAll<HTMLElement>('.hex'))
+  document.addEventListener("DOMContentLoaded", () => {
+    const hc = document.getElementById("hc-hero-en")!;
+    const hexes = Array.from(hc.querySelectorAll<HTMLElement>(".hex"));
 
-  hexes.forEach((hex, i) => {
-    hexSlot[hex.dataset.id!] = i + 1
-    placeInstant(hex, i + 1)
-  })
+    hexes.forEach((hex, i) => {
+      hexSlot[hex.dataset.id!] = i + 1;
+      placeInstant(hex, i + 1);
+    });
 
-  hexes.forEach(hex => {
-    hex.addEventListener('mouseenter', () => handleHover(hex))
-  })
-})
+    hexes.forEach((hex) => {
+      hex.addEventListener("mouseenter", () => handleHover(hex));
+    });
+  });
 </script>

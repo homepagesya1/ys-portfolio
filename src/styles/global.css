@@ -19,6 +19,12 @@
   --container-pad: 32px;
 }
 
+@media (max-width: 600px) {
+  :root {
+    --container-pad: 20px;
+  }
+}
+
 /* ===== Dark Mode (Default) ===== */
 :root,
 [data-theme="dark"] {

@@ -138,9 +138,14 @@ const statusLabels: Record<string, string> = {
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 56px;
     align-items: center;
+  }
+
+  .hero-inner {
+    min-width: 0;
+    padding-top: 50px;
   }
 
   .hero-h1 {
@@ -233,7 +238,7 @@ const statusLabels: Record<string, string> = {
 
   /* Sections */
   .home-section {
-    padding: 72px 0;
+    padding-block: 72px;
   }
 
   .section-head {
@@ -364,9 +369,21 @@ const statusLabels: Record<string, string> = {
     }
   }
   @media (max-width: 600px) {
+    .hero {
+      padding: 48px 0 40px;
+    }
+    .hero-inner {
+      padding-top: 24px;
+    }
+    .home-section {
+      padding-block: 52px;
+    }
     .section-head {
       flex-direction: column;
       align-items: flex-start;
+    }
+    .card-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

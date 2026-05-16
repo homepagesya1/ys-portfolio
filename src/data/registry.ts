@@ -30,6 +30,23 @@ export interface ServiceEntry {
 
 export const projects: ProjectEntry[] = [
   {
+    slug:   'pt-one',
+    status: 'upcoming',
+    tags:   ['Next.js', 'Supabase', 'TypeScript', 'SaaS'],
+    en: {
+      title:   'PTOne',
+      excerpt: 'An all-in-one platform for personal trainers — plans, journals, invoicing and a full client portal.',
+      area:    'Web Design / Development',
+      role:    'Concept, Design, Development',
+    },
+    de: {
+      title:   'PTOne',
+      excerpt: 'Eine All-in-One-Plattform für Personal Trainer — Pläne, Journals, Rechnungen und ein Kundenportal.',
+      area:    'Webdesign / Webentwicklung',
+      role:    'Konzept, Design, Umsetzung',
+    },
+  },
+  {
     slug:   'va',
     status: 'upcoming',
     cover: '/images/va_1.jpeg',
@@ -45,6 +62,24 @@ export const projects: ProjectEntry[] = [
       excerpt: 'Ein neues Projekt in aktiver Entwicklung.',
       area:    'Webentwicklung',
       role:    'Design, Entwicklung',
+    },
+  },
+  {
+    slug:   'ys-workout-trainer',
+    status: 'wip',
+    cover:  '/images/ys-workout_5.png',
+    tags:   ['Next.js', 'Supabase', 'TypeScript', 'UI / UX'],
+    en: {
+      title:   'YS.Workout — Trainer Module',
+      excerpt: 'A full trainer–client extension for YS.Workout: plan management, sharing, live session tracking and a client portal.',
+      area:    'Web Design / Development',
+      role:    'Concept, Design, Development',
+    },
+    de: {
+      title:   'YS.Workout — Trainer Module',
+      excerpt: 'Eine vollständige Trainer–Kunden-Erweiterung für YS.Workout: Planverwaltung, Teilen, Live-Tracking und Kundenportal.',
+      area:    'Webdesign / Webentwicklung',
+      role:    'Konzept, Design, Umsetzung',
     },
   },
   {

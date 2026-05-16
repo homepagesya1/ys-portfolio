@@ -83,8 +83,8 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             possible, as powerful as needed — and completely mine to extend.
           </p>
           <p>
-            In the future, the app will also allow personal trainers to share
-            training plans directly with their clients.
+            The app now also includes a full trainer–client module that allows
+            personal trainers to share training plans directly with their clients.
           </p>
         </div>
       </div>
@@ -176,6 +176,31 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== TRAINER MODULE TEASER ===== -->
+    <section class="section">
+      <span class="section-label">Extension</span>
+      <h2>The Trainer Module.</h2>
+      <div class="extension-box">
+        <div class="extension-text">
+          <p>
+            YS.Workout now includes a full trainer–client system. Trainers can manage clients,
+            build training plans in folders, share them with a single tap, and follow every
+            session in a read-only logbook. Clients execute plans directly inside the app —
+            all sets logged in real time, trainer notes visible inline.
+          </p>
+          <p>
+            A Cloudflare Worker running on an hourly cron automatically closes stale sessions —
+            so neither trainer nor client ever has to clean up manually.
+          </p>
+        </div>
+        <a href="/en/projects/ys-workout-trainer" class="extension-link">
+          Read more about the Trainer Module →
+        </a>
       </div>
     </section>
 
@@ -369,18 +394,39 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
     display: block;
   }
 
-  .step-img--live {
-    width: 280px;
-    height: 500px;
-    justify-self: center;
+  /* Extension teaser */
+  .extension-box {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .extension-text p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .extension-text p:last-child { margin-bottom: 0; }
+
+  .extension-link {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm, 2px);
+    transition: opacity var(--trans);
     align-self: flex-start;
   }
-  .step-img--live img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
+  .extension-link:hover { opacity: 0.75; }
 
   /* Result */
   .result-box {

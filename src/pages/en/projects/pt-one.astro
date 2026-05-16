@@ -1,0 +1,397 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="PTOne" lang="en">
+  <div class="container">
+
+    <a href="/en/projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="section-label">Project</span>
+        <h1>PTOne</h1>
+        <p class="hero-desc">
+          An all-in-one platform for personal trainers. One place for client management, training
+          plans, weekly journals, invoicing, and a client-facing portal — so nothing falls through
+          the cracks.
+        </p>
+
+        <div class="meta">
+          <div class="meta-row">
+            <span class="meta-label">Area</span>
+            <span>Web Design / Development</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Role</span>
+            <span>Concept, Design, Development</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Status</span>
+            <span class="badge badge-upcoming">● Upcoming</span>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="chip">Next.js</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">UI / UX</span>
+          <span class="chip">SaaS</span>
+        </div>
+      </div>
+
+      <div class="hero-img-placeholder">
+        <span class="placeholder-label">Coming Soon</span>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== DESCRIPTION ===== -->
+    <section class="section">
+      <span class="section-label">About the project</span>
+      <div class="two-col">
+        <div>
+          <h2>What is PTOne?</h2>
+          <p>
+            PTOne is a SaaS platform designed specifically for personal trainers who are currently
+            managing their work across three or four different tools: a spreadsheet for accounting,
+            a chat app for plans, an invoicing tool, and their phone for notes.
+          </p>
+          <p>
+            PTOne brings all of that into a single, trainer-branded workspace — from the first client
+            consultation through to the monthly invoice and everything in between.
+          </p>
+        </div>
+        <div>
+          <h2>Why does it need to exist?</h2>
+          <p>
+            Personal trainers are often excellent coaches and terrible administrators. Existing tools
+            are either too generic (Google Sheets), too expensive (enterprise CRMs) or too fitness-only
+            (training apps with no billing). PTOne bridges that gap by treating the business side and
+            the coaching side as equally important — both in one place, both clean.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== FEATURES ===== -->
+    <section class="section">
+      <span class="section-label">Planned features</span>
+      <h2>Everything a trainer needs.</h2>
+
+      <div class="process-steps">
+
+        <!-- TRAINER DASHBOARD -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Trainer</span>
+            <h3>Dashboard & Client Profiles</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                The trainer's central hub. At a glance: active clients, outstanding invoices, recent
+                journal submissions, and upcoming sessions. Each client has a dedicated profile page
+                with contact details, training history, and linked documents.
+              </p>
+              <p>
+                The dashboard surfaces what needs attention — an overdue invoice, a client who hasn't
+                submitted their journal this week, a plan that's never been started — without the
+                trainer having to dig.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>At-a-glance overview of all clients</li>
+                <li>Outstanding invoices highlighted</li>
+                <li>Journal submission status per client</li>
+                <li>Quick-link to client profile, plan, history</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRAINING PLANS -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Coaching</span>
+            <h3>Training Plans & Live Tracking</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Trainers build plans in a clean editor and assign them to clients directly. Clients
+                then execute those plans inside their own portal — logging sets, weights and reps in
+                real time. Finished sessions flow back into the trainer's view automatically.
+              </p>
+              <p>
+                The trainer sees exactly what was lifted, how long the session took, and whether any
+                exercises were skipped or swapped — without asking the client to screenshot anything.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Visual plan builder with exercise library</li>
+                <li>Client-side session execution & logging</li>
+                <li>Real-time set / weight / reps tracking</li>
+                <li>Session history visible to trainer</li>
+                <li>Notes and feedback per exercise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- JOURNAL -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Check-ins</span>
+            <h3>Weekly Journal</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                The trainer defines a weekly check-in template: sleep, energy, nutrition, stress,
+                body weight, freeform notes — whatever matters for that client. Clients fill it in
+                from their portal each week.
+              </p>
+              <p>
+                Responses land in the trainer's dashboard with a read / unread indicator.
+                Submissions are timestamped and archived so progress over weeks and months can be
+                tracked and discussed in the next session.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Customisable check-in template per client</li>
+                <li>Client fills in from their portal</li>
+                <li>Read / unread badge in trainer dashboard</li>
+                <li>Full archive with timestamps</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVOICING -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Business</span>
+            <h3>Invoices, Reminders & Accounting</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Trainers create invoices directly inside PTOne — client details, line items, amounts,
+                due dates. Each invoice has a status: Draft, Sent, Paid, or Overdue. Reminder emails
+                can be triggered manually or scheduled automatically when a due date passes.
+              </p>
+              <p>
+                Clients can view their own invoices and payment status inside the client portal —
+                no back-and-forth emails needed. An accounting overview shows monthly revenue,
+                outstanding totals, and paid totals at a glance.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Invoice creation with line items</li>
+                <li>Status: Draft / Sent / Paid / Overdue</li>
+                <li>Manual and automatic reminders</li>
+                <li>Client-visible invoice portal</li>
+                <li>Monthly revenue & outstanding overview</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLIENT PORTAL -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Client Side</span>
+            <h3>Client Portal</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Clients log in to their own portal — not a generic app, but a space that feels like
+                it belongs to their trainer. They can see their active training plan, start a session,
+                submit the weekly journal, and check the status of their invoices, all in one place.
+              </p>
+              <p>
+                No extra apps needed. No WhatsApp screenshots. No confusion about which plan is
+                current. Everything the client needs to stay on track is here.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Branded client login</li>
+                <li>Active plan & session launcher</li>
+                <li>Weekly journal submission</li>
+                <li>Invoice overview with status</li>
+                <li>Session history & progress view</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== RESULT ===== -->
+    <section class="section">
+      <span class="section-label">Vision</span>
+      <h2>The goal.</h2>
+      <div class="result-box">
+        <p>
+          PTOne is currently in the concept and early design phase. The foundation — training plans,
+          session tracking and the trainer–client link — is already proven inside
+          <a href="/en/projects/ys-workout" class="inline-link">YS.Workout</a>. PTOne takes that
+          core and wraps it with the business layer that professional trainers actually need: invoicing,
+          reminders, journals, and a clean client-facing portal. The aim is a tool a trainer can
+          hand to a new client on day one and never have to explain twice.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: start;
+    padding: 72px 0 56px;
+  }
+
+  .hero-text h1 { font-size: clamp(32px, 5vw, 52px); margin: 6px 0 18px; }
+  .hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+  .meta { display: flex; flex-direction: column; margin-bottom: 22px; }
+  .meta-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 11px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+  }
+  .meta-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); min-width: 64px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  /* Placeholder hero image */
+  .hero-img-placeholder {
+    width: 375px;
+    height: 500px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    border-radius: var(--radius-md);
+    border: 0.5px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .placeholder-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  /* Sections */
+  .section { padding: 56px 0; }
+  .section h2 { margin: 6px 0 20px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .two-col p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+
+  /* Process */
+  .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+
+  .process-step {
+    padding: 36px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  .step-head { margin-bottom: 20px; }
+  .step-eyebrow {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .step-head h3 { font-size: 22px; letter-spacing: -0.02em; }
+
+  .step-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .step-text p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+
+  /* Feature card */
+  .feature-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .feature-list li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feature-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* Result */
+  .result-box {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .result-box p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+
+  .inline-link {
+    color: var(--accent);
+    transition: opacity var(--trans);
+  }
+  .inline-link:hover { opacity: 0.75; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .hero-img-placeholder { order: -1; width: 100%; height: 200px; }
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+    .step-body { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,383 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="YS.Workout — Trainer Module" lang="en">
+  <div class="container">
+
+    <a href="/en/projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="section-label">Project</span>
+        <h1>YS.Workout<br/>Trainer Module</h1>
+        <p class="hero-desc">
+          A full trainer–client extension built on top of YS.Workout. Trainers can manage clients,
+          build and share training plans, and follow their clients' progress — all within the same app.
+        </p>
+
+        <div class="meta">
+          <div class="meta-row">
+            <span class="meta-label">Area</span>
+            <span>Web Design / Development</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Role</span>
+            <span>Concept, Design, Development</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Status</span>
+            <span class="badge badge-wip">● In Progress</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Part of</span>
+            <a href="/en/projects/ys-workout" class="meta-link">YS.Workout ↗</a>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="chip">Next.js</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">UI / UX</span>
+          <span class="chip">RLS / Auth</span>
+        </div>
+      </div>
+
+      <div class="hero-img">
+        <img src="/images/ys-workout_4.webp" alt="YS.Workout Trainer Module preview" />
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== DESCRIPTION ===== -->
+    <section class="section">
+      <span class="section-label">About the project</span>
+      <div class="two-col">
+        <div>
+          <h2>What is the Trainer Module?</h2>
+          <p>
+            The Trainer Module extends YS.Workout with a full coach–client system. A trainer gets their
+            own dashboard under <code>/trainer</code> where they can onboard clients, organise training
+            plans in folders, share those plans with individual clients, and review every finished
+            session in a read-only logbook.
+          </p>
+          <p>
+            Clients see their shared plans under <code>/coach</code>, start or resume sessions, and
+            log every set in real time — exactly as they already would for their own personal workouts.
+          </p>
+        </div>
+        <div>
+          <h2>Why build it inside YS.Workout?</h2>
+          <p>
+            Rather than building a separate tool, the trainer module extends the existing app — same
+            auth layer, same exercise database, same tracking logic. The only difference is role:
+            trainers have <code>is_trainer = true</code> on their profile; clients get
+            <code>has_coach = true</code> once linked.
+          </p>
+          <p>
+            Row-level security in Supabase ensures that each user only ever sees their own data,
+            regardless of role — no extra middleware required.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== FEATURES ===== -->
+    <section class="section">
+      <span class="section-label">Feature breakdown</span>
+      <h2>What the module covers.</h2>
+
+      <div class="process-steps">
+
+        <!-- TRAINER SIDE -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Trainer Side</span>
+            <h3>Client Management</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Trainers add clients by entering their email. The app looks up the profile, creates
+                the <code>trainer_clients</code> link and flags the user as having a coach. From the
+                client card a trainer can jump directly to that client's plans or read-only logbook.
+              </p>
+              <p>
+                Each client can have multiple folders — "Strength Phase", "Cardio Block" — each
+                containing multiple training plans. Folders and their plans are deleted together to
+                keep things tidy.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Add clients by email</li>
+                <li>Active / pending status</li>
+                <li>Folder-based plan organisation</li>
+                <li>Read-only client logbook</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAN EDITOR -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Trainer Side</span>
+            <h3>Plan Editor & Sharing</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Plans are built inside a full-screen in-place editor. Exercises are stored as a JSONB
+                array — each entry holds the exercise reference, target sets, reps, weight, and an
+                optional trainer note. Exercises can be reordered and removed freely.
+              </p>
+              <p>
+                Sharing a plan is a single toggle: it upserts a row into <code>plan_shares</code>.
+                The client immediately sees the plan on their dashboard. Unsharing removes the row
+                and the plan disappears from the client's view. Plans can also be saved as templates
+                and reused or copied across clients.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>JSONB exercise array with targets</li>
+                <li>Drag-to-reorder (↑/↓)</li>
+                <li>One-tap share / unshare toggle</li>
+                <li>Template system + copy-to-client</li>
+                <li>Trainer notes per exercise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLIENT SIDE -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Client Side</span>
+            <h3>Session Tracking</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Clients see shared plans grouped by folder. A green tag marks plans with an active
+                ongoing session; a purple tag marks plans ready to start. Tapping a card opens the
+                session view.
+              </p>
+              <p>
+                Sessions are persistent: progress is saved to Supabase after every set and also
+                cached in <code>localStorage</code> so a reload or browser close never loses data.
+                Trainer notes appear inline below each exercise — read-only for the client. An
+                elapsed timer runs in the sticky header.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Resume active sessions across reloads</li>
+                <li>Live set-by-set persistence</li>
+                <li>Inline trainer notes (read-only)</li>
+                <li>Elapsed timer with background pause</li>
+                <li>Add extra exercises mid-session</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUTO-END -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Infrastructure</span>
+            <h3>Auto-End Worker</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                A Cloudflare Worker runs on an hourly cron schedule. It finds all coach sessions
+                that have been active for more than 12 hours, discards any sets with no weight and
+                no reps, marks the session as finished and prefixes the title with
+                <em>⚡ Auto-ended (Coach)</em>.
+              </p>
+              <p>
+                This prevents stale sessions from cluttering the client's dashboard and keeps the
+                trainer's logbook view accurate — no manual cleanup needed.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Cloudflare Worker cron (hourly)</li>
+                <li>Cleans empty sets automatically</li>
+                <li>Marks sessions ⚡ Auto-ended</li>
+                <li>Covers both personal + coach sessions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== DATA MODEL ===== -->
+    <section class="section">
+      <span class="section-label">Architecture</span>
+      <h2>How the data is structured.</h2>
+      <div class="result-box">
+        <p>
+          The entire feature sits on top of six Supabase tables: <code>trainer_clients</code> links
+          trainers to clients, <code>client_folders</code> groups plans, <code>training_plans</code>
+          holds the actual plan with a JSONB exercise array, <code>plan_shares</code> controls
+          visibility, and <code>workout_sessions</code> / <code>sets</code> record what the client
+          did. Row-level security is defined on every table — trainers see their own clients' data,
+          clients see only what's been explicitly shared with them.
+        </p>
+        <p style="margin-top: 12px;">
+          The data hierarchy is: <strong>Trainer → Clients → Folders → Plans → Shares → Sessions → Sets.</strong>
+          Each layer is independently secured, which means adding new features later (e.g. group
+          sessions, billing) can slot in without redesigning the access model.
+        </p>
+        <a href="/en/projects/ys-workout" class="btn-primary" style="margin-top: 20px; display: inline-flex;">
+          Back to YS.Workout →
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: start;
+    padding: 72px 0 56px;
+  }
+
+  .hero-text h1 { font-size: clamp(28px, 5vw, 48px); margin: 6px 0 18px; line-height: 1.1; }
+  .hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+  .meta { display: flex; flex-direction: column; margin-bottom: 22px; }
+  .meta-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 11px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+  }
+  .meta-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); min-width: 64px;
+  }
+  .meta-link { color: var(--accent); font-size: 13px; transition: opacity var(--trans); }
+  .meta-link:hover { opacity: 0.75; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .hero-img {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+    width: 375px;
+    height: 500px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+  .hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top; display: block;
+  }
+
+  /* Sections */
+  .section { padding: 56px 0; }
+  .section h2 { margin: 6px 0 20px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .two-col p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+
+  code {
+    font-size: 12px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* Process */
+  .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+
+  .process-step {
+    padding: 36px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  .step-head { margin-bottom: 20px; }
+  .step-eyebrow {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .step-head h3 { font-size: 22px; letter-spacing: -0.02em; }
+
+  .step-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .step-text p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+
+  /* Feature card */
+  .feature-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .feature-list li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feature-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* Result */
+  .result-box {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .result-box p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .hero-img { order: -1; }
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+    .step-body { grid-template-columns: 1fr; }
+  }
+</style>

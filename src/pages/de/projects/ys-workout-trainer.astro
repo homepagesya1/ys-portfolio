@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="YS.Workout — Trainer Module" lang="de">
+  <div class="container">
+
+    <a href="/de/projects" class="back-link">← Zurück zu Projekte</a>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="section-label">Projekt</span>
+        <h1>YS.Workout<br/>Trainer Module</h1>
+        <p class="hero-desc">
+          Eine vollständige Trainer–Client-Erweiterung innerhalb von YS.Workout. Trainer verwalten
+          Kunden, erstellen und teilen Trainingspläne und verfolgen den Fortschritt — alles in
+          derselben App.
+        </p>
+
+        <div class="meta">
+          <div class="meta-row">
+            <span class="meta-label">Bereich</span>
+            <span>Webdesign / Webentwicklung</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Rolle</span>
+            <span>Konzept, Design, Umsetzung</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Status</span>
+            <span class="badge badge-wip">● In Entwicklung</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Teil von</span>
+            <a href="/de/projects/ys-workout" class="meta-link">YS.Workout ↗</a>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="chip">Next.js</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">UI / UX</span>
+          <span class="chip">RLS / Auth</span>
+        </div>
+      </div>
+
+      <div class="hero-img">
+        <img src="/images/ys-workout_4.webp" alt="YS.Workout Trainer Module Vorschau" />
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== BESCHREIBUNG ===== -->
+    <section class="section">
+      <span class="section-label">Über das Projekt</span>
+      <div class="two-col">
+        <div>
+          <h2>Was ist das Trainer Module?</h2>
+          <p>
+            Das Trainer Module erweitert YS.Workout um ein vollständiges Coach–Client-System. Ein
+            Trainer erhält ein eigenes Dashboard unter <code>/trainer</code>, in dem er Kunden
+            hinzufügen, Trainingspläne in Ordnern organisieren, diese gezielt teilen und den
+            Fortschritt im Read-only-Logbuch verfolgen kann.
+          </p>
+          <p>
+            Kunden sehen ihre geteilten Pläne unter <code>/coach</code>, starten oder setzen
+            Sessions fort und tracken jeden Satz in Echtzeit — genau wie bei ihren eigenen,
+            persönlichen Workouts.
+          </p>
+        </div>
+        <div>
+          <h2>Warum direkt in YS.Workout?</h2>
+          <p>
+            Anstatt ein separates Tool zu bauen, wird das Trainer Module direkt in die bestehende
+            App integriert — gleicher Auth-Layer, gleiche Übungsdatenbank, gleiche Tracking-Logik.
+            Der einzige Unterschied ist die Rolle: Trainer haben <code>is_trainer = true</code> im
+            Profil, Kunden erhalten <code>has_coach = true</code> sobald sie verknüpft sind.
+          </p>
+          <p>
+            Row-Level Security in Supabase stellt sicher, dass jeder Nutzer nur seine eigenen Daten
+            sieht — unabhängig von der Rolle und ohne zusätzliche Middleware.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== FEATURES ===== -->
+    <section class="section">
+      <span class="section-label">Feature-Übersicht</span>
+      <h2>Was das Module abdeckt.</h2>
+
+      <div class="process-steps">
+
+        <!-- TRAINER SEITE -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Trainer-Seite</span>
+            <h3>Kundenverwaltung</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Trainer fügen Kunden per E-Mail hinzu. Die App sucht das Profil, erstellt die
+                <code>trainer_clients</code>-Verknüpfung und markiert den Nutzer als betreut. Von
+                der Kundenkarte aus gelangt der Trainer direkt zu den Plänen oder dem Read-only-Logbuch
+                des jeweiligen Kunden.
+              </p>
+              <p>
+                Jeder Kunde kann mehrere Ordner haben — z. B. "Kraftphase" oder "Cardio-Block" —
+                jeweils mit beliebig vielen Trainingsplänen. Ordner und deren Pläne werden gemeinsam
+                gelöscht, damit alles übersichtlich bleibt.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Kunden per E-Mail hinzufügen</li>
+                <li>Status: aktiv / ausstehend</li>
+                <li>Ordnerbasierte Planverwaltung</li>
+                <li>Read-only Kunden-Logbuch</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAN EDITOR -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Trainer-Seite</span>
+            <h3>Plan-Editor & Teilen</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Pläne werden in einem Vollbild-Editor erstellt. Übungen werden als JSONB-Array
+                gespeichert — jeder Eintrag enthält die Übungsreferenz, Zielsätze, Wiederholungen,
+                Gewicht und eine optionale Trainer-Notiz. Übungen lassen sich frei sortieren und
+                entfernen.
+              </p>
+              <p>
+                Teilen ist ein einzelner Toggle: Er fügt eine Zeile in <code>plan_shares</code> ein.
+                Der Kunde sieht den Plan sofort in seinem Dashboard. Beim Aufheben des Teilens wird
+                die Zeile gelöscht. Pläne können auch als Templates gespeichert und bei anderen
+                Kunden eingefügt oder kopiert werden.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>JSONB-Übungsarray mit Zielvorgaben</li>
+                <li>Sortieren per ↑/↓-Schaltflächen</li>
+                <li>Teilen / Zurückziehen per Toggle</li>
+                <li>Templates & Kopieren auf andere Kunden</li>
+                <li>Trainer-Notizen pro Übung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLIENT SIDE -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Kunden-Seite</span>
+            <h3>Session-Tracking</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Kunden sehen geteilte Pläne nach Ordner gruppiert. Ein grünes Tag markiert Pläne
+                mit einer laufenden Session, ein lila Tag zeigt startbereite Pläne. Ein Tap auf eine
+                Karte öffnet die Session-Ansicht.
+              </p>
+              <p>
+                Sessions sind persistent: Fortschritte werden nach jedem Satz in Supabase gespeichert
+                und zusätzlich im <code>localStorage</code> gecacht — ein Reload oder Browserschluss
+                verliert keine Daten. Trainer-Notizen erscheinen inline unter jeder Übung (read-only
+                für den Kunden). Ein Elapsed-Timer läuft im Sticky-Header.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Sessions über Reloads hinweg fortsetzen</li>
+                <li>Echtzeit-Persistenz pro Satz</li>
+                <li>Trainer-Notizen inline (read-only)</li>
+                <li>Elapsed-Timer mit Hintergrund-Pause</li>
+                <li>Zusätzliche Übungen mid-Session hinzufügen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUTO-END -->
+        <div class="process-step">
+          <div class="step-head">
+            <span class="step-eyebrow">Infrastruktur</span>
+            <h3>Auto-End Worker</h3>
+          </div>
+          <div class="step-body">
+            <div class="step-text">
+              <p>
+                Ein Cloudflare Worker läuft stündlich per Cron-Schedule. Er sucht alle Coach-Sessions
+                die seit mehr als 12 Stunden aktiv sind, löscht leere Sätze, markiert die Session
+                als abgeschlossen und setzt den Titel auf
+                <em>⚡ Auto-ended (Coach)</em>.
+              </p>
+              <p>
+                So bleiben das Dashboard der Kunden und das Logbuch des Trainers immer sauber —
+                ohne manuelles Aufräumen.
+              </p>
+            </div>
+            <div class="feature-card">
+              <ul class="feature-list">
+                <li>Cloudflare Worker Cron (stündlich)</li>
+                <li>Automatisches Bereinigen leerer Sätze</li>
+                <li>Sessions auf ⚡ Auto-ended setzen</li>
+                <li>Gilt für persönliche & Coach-Sessions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ===== DATENMODELL ===== -->
+    <section class="section">
+      <span class="section-label">Architektur</span>
+      <h2>Wie die Daten aufgebaut sind.</h2>
+      <div class="result-box">
+        <p>
+          Das gesamte Feature baut auf sechs Supabase-Tabellen auf: <code>trainer_clients</code>
+          verknüpft Trainer mit Kunden, <code>client_folders</code> gruppiert Pläne,
+          <code>training_plans</code> speichert den Plan mit JSONB-Übungsarray,
+          <code>plan_shares</code> steuert die Sichtbarkeit, und
+          <code>workout_sessions</code> / <code>sets</code> erfassen was der Kunde gemacht hat.
+          Row-Level Security ist auf jeder Tabelle definiert — Trainer sehen die Daten ihrer
+          eigenen Kunden, Kunden nur was explizit für sie freigegeben wurde.
+        </p>
+        <p style="margin-top: 12px;">
+          Die Datenhierarchie: <strong>Trainer → Kunden → Ordner → Pläne → Shares → Sessions → Sätze.</strong>
+          Jede Ebene ist einzeln abgesichert — neue Features lassen sich später einfach ergänzen
+          ohne das Zugriffsmodell neu zu entwerfen.
+        </p>
+        <a href="/de/projects/ys-workout" class="btn-primary" style="margin-top: 20px; display: inline-flex;">
+          Zurück zu YS.Workout →
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: start;
+    padding: 72px 0 56px;
+  }
+
+  .hero-text h1 { font-size: clamp(28px, 5vw, 48px); margin: 6px 0 18px; line-height: 1.1; }
+  .hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+  .meta { display: flex; flex-direction: column; margin-bottom: 22px; }
+  .meta-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 11px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+  }
+  .meta-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted); min-width: 64px;
+  }
+  .meta-link { color: var(--accent); font-size: 13px; transition: opacity var(--trans); }
+  .meta-link:hover { opacity: 0.75; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .hero-img {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+    width: 375px;
+    height: 500px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+  .hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top; display: block;
+  }
+
+  /* Sections */
+  .section { padding: 56px 0; }
+  .section h2 { margin: 6px 0 20px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .two-col p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+
+  code {
+    font-size: 12px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* Process */
+  .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+
+  .process-step {
+    padding: 36px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  .step-head { margin-bottom: 20px; }
+  .step-eyebrow {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .step-head h3 { font-size: 22px; letter-spacing: -0.02em; }
+
+  .step-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .step-text p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+
+  /* Feature card */
+  .feature-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .feature-list li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .feature-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  /* Result */
+  .result-box {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+  }
+  .result-box p { font-size: 15px; color: var(--muted); line-height: 1.75; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .hero-img { order: -1; }
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+    .step-body { grid-template-columns: 1fr; }
+  }
+</style>

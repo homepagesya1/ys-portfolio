@@ -192,36 +192,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro'
           </div>
         </div>
 
-        <!-- AUTO-END -->
-        <div class="process-step">
-          <div class="step-head">
-            <span class="step-eyebrow">Infrastruktur</span>
-            <h3>Auto-End Worker</h3>
-          </div>
-          <div class="step-body">
-            <div class="step-text">
-              <p>
-                Ein Cloudflare Worker läuft stündlich per Cron-Schedule. Er sucht alle Coach-Sessions
-                die seit mehr als 12 Stunden aktiv sind, löscht leere Sätze, markiert die Session
-                als abgeschlossen und setzt den Titel auf
-                <em>⚡ Auto-ended (Coach)</em>.
-              </p>
-              <p>
-                So bleiben das Dashboard der Kunden und das Logbuch des Trainers immer sauber —
-                ohne manuelles Aufräumen.
-              </p>
-            </div>
-            <div class="feature-card">
-              <ul class="feature-list">
-                <li>Cloudflare Worker Cron (stündlich)</li>
-                <li>Automatisches Bereinigen leerer Sätze</li>
-                <li>Sessions auf ⚡ Auto-ended setzen</li>
-                <li>Gilt für persönliche & Coach-Sessions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 

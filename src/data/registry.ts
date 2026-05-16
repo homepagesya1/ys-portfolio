@@ -66,7 +66,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     slug:   'ys-workout-trainer',
-    status: 'wip',
+    status: 'active',
     cover:  '/images/ys-workout_5.png',
     tags:   ['Next.js', 'Supabase', 'TypeScript', 'UI / UX'],
     en: {
@@ -84,7 +84,7 @@ export const projects: ProjectEntry[] = [
   },
   {
     slug:   'ys-workout',
-    status: 'wip',
+    status: 'active',
     cover:  '/images/ys-workout_5.png',
     tags:   ['HTML / CSS', 'JavaScript', 'UI / UX'],
     en: {
